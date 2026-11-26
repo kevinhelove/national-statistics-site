@@ -1,0 +1,164 @@
+/* China in Numbers: a paper-and-ink design with a vermilion seal for a mark. System fonts only, so the
+   site loads fast and works offline; charts are inline SVG styled from charts.js class names. */
+
+:root {
+  --paper: #faf6ee;
+  --card: #fffdf7;
+  --ink: #22252b;
+  --muted: #6f6a5e;
+  --red: #b3352b;
+  --red-dark: #8e2a22;
+  --gold: #b98a2f;
+  --line: #e4dcc9;
+  --wash: #f1ead9;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.55;
+}
+
+h1, h2, h3, .stat-value, .card-value {
+  font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, "Songti SC", serif;
+}
+
+a { color: var(--red-dark); }
+
+/* header */
+.site-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.5rem;
+  padding: 0.9rem max(1.1rem, calc((100% - 1060px) / 2));
+  background: var(--ink);
+  color: #f5efe2;
+}
+.brand { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; color: inherit; }
+.seal {
+  display: grid;
+  place-items: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  background: var(--red);
+  color: #fff;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 1.35rem;
+  border-radius: 0.3rem;
+}
+.brand-text { font-family: "Iowan Old Style", Palatino, Georgia, serif; font-size: 1.3rem; line-height: 1.1; }
+.brand-text small { display: block; font-family: inherit; font-size: 0.68rem; letter-spacing: 0.08em; color: #cfc7b4; }
+.main-nav { display: flex; flex-wrap: wrap; gap: 0.2rem 1.05rem; margin-left: auto; }
+.main-nav a { color: #e8e1cf; text-decoration: none; font-size: 0.95rem; padding: 0.2rem 0; border-bottom: 2px solid transparent; }
+.main-nav a:hover { color: #fff; }
+.main-nav a.active { border-bottom-color: var(--red); color: #fff; }
+
+main { max-width: 1060px; margin: 0 auto; padding: 1.4rem 1.1rem 2.5rem; }
+
+/* headings and ledes */
+.kicker { color: var(--muted); font-size: 0.85rem; letter-spacing: 0.04em; margin: 0 0 0.4rem; }
+.kicker a { color: var(--muted); }
+.hero h1, .page-head h1 { font-size: 2.5rem; margin: 0.1rem 0 0.5rem; line-height: 1.12; }
+.lede { font-size: 1.08rem; color: #3d3a33; max-width: 46rem; margin: 0.3rem 0 0; }
+.page-head { margin-bottom: 1.4rem; }
+h2 { font-size: 1.45rem; margin: 1.8rem 0 0.7rem; }
+
+/* stat cards */
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.8rem; margin: 1.5rem 0 0.4rem; }
+.stat-card {
+  display: flex; flex-direction: column; gap: 0.15rem;
+  background: var(--card); border: 1px solid var(--line); border-top: 3px solid var(--red);
+  border-radius: 0.45rem; padding: 0.85rem 0.95rem; text-decoration: none; color: inherit;
+}
+.stat-card:hover { border-color: var(--red); }
+.stat-name { font-size: 0.82rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+.stat-value { font-size: 1.65rem; line-height: 1.15; }
+.stat-meta { font-size: 0.82rem; color: var(--muted); }
+
+/* chart cards */
+.feature-charts { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-top: 0.9rem; }
+.card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+.chart-card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 0.45rem;
+  padding: 1rem 1.05rem 0.85rem; margin: 0 0 0.9rem;
+}
+.chart-card h3 { margin: 0; font-size: 1.18rem; }
+.chart-card h3 a { color: inherit; text-decoration: none; }
+.chart-card h3 a:hover { color: var(--red-dark); text-decoration: underline; }
+.card-value { font-size: 1.3rem; margin: 0.15rem 0 0.3rem; }
+.card-value span { font-size: 0.85rem; color: var(--muted); font-family: inherit; }
+.card-blurb { margin: 0.45rem 0 0.5rem; color: #3d3a33; font-size: 0.95rem; }
+.card-foot { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-size: 0.8rem; color: var(--muted); margin: 0.4rem 0 0; }
+.card-foot a { white-space: nowrap; }
+.legend { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; margin: 0.25rem 0 0; font-size: 0.85rem; color: var(--muted); }
+.legend-item { display: inline-flex; align-items: center; gap: 0.35rem; }
+.swatch { width: 0.8rem; height: 0.8rem; border-radius: 0.2rem; display: inline-block; }
+
+/* charts (SVG from charts.js) */
+.chart { width: 100%; height: auto; display: block; }
+.chart .line { fill: none; stroke-width: 2.2; stroke-linejoin: round; stroke-linecap: round; }
+.chart .area { opacity: 0.1; stroke: none; }
+.chart .grid { stroke: var(--line); stroke-width: 1; }
+.chart .grid-zero { stroke: #b9b09a; stroke-width: 1; }
+.chart .tick { font-size: 11.5px; fill: var(--muted); font-family: -apple-system, "Segoe UI", sans-serif; }
+.chart-empty { color: var(--muted); }
+
+/* facts */
+.facts ol { padding-left: 1.3rem; margin: 0.4rem 0 0; }
+.facts li { margin: 0.45rem 0; max-width: 46rem; }
+
+/* section cards */
+.section-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0.9rem; margin-top: 1.6rem; }
+.section-card { background: var(--ink); color: #f0ead9; border-radius: 0.45rem; padding: 1.05rem 1.1rem; text-decoration: none; }
+.section-card h3 { margin: 0 0 0.3rem; color: #fff; }
+.section-card p { margin: 0 0 0.6rem; color: #d8d1bd; font-size: 0.95rem; }
+.section-count { font-size: 0.8rem; color: #b7ae97; }
+
+/* indicator page */
+.indicator-top { display: grid; grid-template-columns: 250px 1fr; gap: 1.2rem; align-items: start; }
+.big-stat { background: var(--card); border: 1px solid var(--line); border-top: 3px solid var(--red); border-radius: 0.45rem; padding: 1rem 1.05rem; display: flex; flex-direction: column; gap: 0.2rem; }
+.big-stat .stat-value { font-size: 2.1rem; }
+.mini-dl { margin: 0.8rem 0 0; }
+.mini-dl div { display: flex; justify-content: space-between; gap: 0.8rem; border-top: 1px solid var(--line); padding: 0.35rem 0; }
+.mini-dl dt { color: var(--muted); font-size: 0.85rem; }
+.mini-dl dd { margin: 0; font-weight: 600; text-align: right; }
+.big-chart { background: var(--card); border: 1px solid var(--line); border-radius: 0.45rem; padding: 0.9rem 1.05rem 0.8rem; }
+.range-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.5rem; }
+.range-btn {
+  font: inherit; font-size: 0.85rem; padding: 0.28rem 0.7rem; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--paper); color: var(--ink); cursor: pointer;
+}
+.range-btn:hover { border-color: var(--red); }
+.range-btn.active { background: var(--red); border-color: var(--red); color: #fff; }
+.indicator-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 0.4rem; }
+.def-dl div { margin: 0 0 0.7rem; }
+.def-dl dt { font-weight: 700; font-size: 0.85rem; letter-spacing: 0.03em; text-transform: uppercase; color: var(--muted); }
+.def-dl dd { margin: 0.15rem 0 0; }
+.data-table table { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
+.data-table th, .data-table td { text-align: left; padding: 0.28rem 0.5rem; border-bottom: 1px solid var(--line); }
+.data-table th { background: var(--wash); }
+.data-table td:last-child, .data-table th:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+.pager { margin-top: 1.6rem; }
+
+/* about prose */
+.prose { max-width: 46rem; }
+.prose p { margin: 0.5rem 0; }
+
+/* footer */
+.site-foot { border-top: 1px solid var(--line); padding: 1.1rem max(1.1rem, calc((100% - 1060px) / 2)) 1.6rem; color: var(--muted); font-size: 0.85rem; }
+.site-foot p { margin: 0; max-width: 1060px; }
+
+/* phone */
+@media (max-width: 760px) {
+  .feature-charts, .card-grid, .indicator-top, .indicator-detail { grid-template-columns: 1fr; }
+  .hero h1, .page-head h1 { font-size: 1.9rem; }
+  .stat-value { font-size: 1.4rem; }
+  .big-stat .stat-value { font-size: 1.8rem; }
+  .main-nav { margin-left: 0; }
+  main { padding-top: 1rem; }
+}
